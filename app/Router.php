@@ -39,6 +39,7 @@ class Router
     public static function execute($url)
     {
         $routes = self::$routes[$_SERVER['REQUEST_METHOD']] ?? 'GET';
+
         foreach ($routes as $pattern => $callback) {
             $url = strtok(trim($url, '/'), '?') ?: '/';
 

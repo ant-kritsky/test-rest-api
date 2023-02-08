@@ -1,13 +1,14 @@
 <?php
 
-$dbConf = [
-    'HOST' => 'localhost',
-    'PORT' => '3306',
-    'DATABASE' => 'test-rest-api',
-    'USERNAME' => 'root',
-    'PASSWORD' => '',
-];
+namespace app;
+
+class DbConf
+{
+    const HOST = 'localhost';
+    const PORT = '3306';
+    const DATABASE = 'test-rest-api';
+    const USERNAME = 'root';
+    const PASSWORD = '';
+}
 
 require_once __DIR__ . '/app/bootstrap.php';
-
-\app\DatabaseConnector::init($dbConf);

@@ -1,8 +1,9 @@
 <?php
 
-namespace app\Models;
+namespace app\models;
 
-use app\DatabaseConnector as DC,
+use app\Container,
+    app\DatabaseConnector as DC,
     PDO;
 
 abstract class ModelBase
@@ -13,7 +14,8 @@ abstract class ModelBase
 
     public function __construct()
     {
-        $this->_db = DC::getInstance()->getConnection();
+        $connector = Container::getInstance()->get(DC::class);
+        $this->_db =  $connector->getConnection();
 
         return $this;
     }
