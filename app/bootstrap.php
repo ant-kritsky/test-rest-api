@@ -2,7 +2,7 @@
 
 spl_autoload_register(function ($className) {
     $directory = __DIR__ . '/../';
-    $path = $directory . $className . '.php';
+    $path = str_replace('\\', DIRECTORY_SEPARATOR, $directory . $className . '.php');
 
     if (file_exists($path)) {
         require_once($path);
@@ -20,5 +20,5 @@ function ApiResponse($status, array $body = [])
 
     echo json_encode([
             'status' => $status,
-        ] + $body);
+        ] + $body, JSON_PRETTY_PRINT);
 }
